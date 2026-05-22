@@ -1,0 +1,53 @@
+{% load static %}
+
+<nav class="bottom-nav">
+
+    <a href="{% url 'home_main' %}" class="nav-item home">
+
+        {% if active_nav == 'home' %}
+        <img src="{% static 'images/home-icon-filled.svg' %}" alt="홈">
+        {% else %}
+        <img src="{% static 'images/home-icon-empty.svg' %}" alt="홈">
+        {% endif %}
+
+        <span>홈</span>
+
+    </a>
+
+    <a href="{% url 'space_main' %}" class="nav-item space">
+
+        {% if active_nav == 'space' %}
+        <img src="{% static 'images/multiple-stars-solid-filled.svg' %}" alt="우주">
+        {% else %}
+        <img src="{% static 'images/multiple-stars-empty.svg' %}" alt="우주">
+        {% endif %}
+
+        <span>우주</span>
+
+    </a>
+
+    <a href="{% url 'memory_main' %}" class="nav-item memory">
+
+        {% if active_nav == 'memory' %}
+        <img src="{% static 'images/pictures-folder-memories-solid-filled.svg' %}" alt="추억">
+        {% else %}
+        <img src="{% static 'images/pictures-folder-memories-empty.svg' %}" alt="추억">
+        {% endif %}
+
+        <span>추억</span>
+
+    </a>
+
+    <a href="{% url 'mypage_main' %}" class="nav-item mypage">
+
+        {% if active_nav == 'mypage' %}
+        <img src="{% static 'images/user-circle-single-filled.svg' %}" alt="마이페이지">
+        {% else %}
+        <img src="{% static 'images/user-circle-single-empty.svg' %}" alt="마이페이지">
+        {% endif %}
+
+        <span>마이페이지</span>
+
+    </a>
+
+</nav>

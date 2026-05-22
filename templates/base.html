@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>
         {% block title %}
@@ -14,11 +15,11 @@
         {% endblock %}
     </title>
 
-    <!-- 공통 css -->
+    <!-- global css -->
     <link rel="stylesheet"
         href="{% static 'css/global.css' %}">
 
-    <!-- 페이지별 css -->
+    <!-- page css -->
     {% block extra_css %}
     {% endblock %}
 </head>
@@ -34,13 +35,9 @@
 
         </main>
 
-        <!-- 하단 nav 들어갈 가능성 높음 -->
-        {% block bottom_nav %}
-        {% endblock %}
-
     </div>
 
-    <!-- 페이지별 js -->
+    <!-- page js -->
     {% block extra_js %}
     {% endblock %}
 
