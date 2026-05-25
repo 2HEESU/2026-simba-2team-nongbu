@@ -1,0 +1,36 @@
+.primary-btn {
+    display: flex;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: var(--Foundation-Violet-Normal, #1A1953);
+    color: #FFF;
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    /* 버튼용 */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; /* 114.286% */
+
+    border: none;
+    outline: none;
+
+}
+
+.primary-btn:hover {
+    background: var(--foundation-violet-light-active, #B8B8CA);
+}
+
+.primary-btn:active {
+    background: var(--Foundation-Violet-Dark, #14133E);
+    transform: scale(0.98);
+}
+
+.primary-btn:disabled {
+    background: #E8E8EE;
+    color: #C3C3C3;
+}
