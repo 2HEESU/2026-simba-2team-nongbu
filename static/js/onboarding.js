@@ -1,39 +1,17 @@
 const container = document.querySelector('.onboarding-container');
+const nextButtons = document.querySelectorAll('.next-btn');
+const startButton = document.querySelector('.start-btn');
 
 let currentPage = 0;
 
-const totalPages = 3;
-const slideWidth = 100 / totalPages;
-
-function moveSlide() {
-    container.style.transform = `translateX(-${currentPage * slideWidth}%)`;
-}
-
-let startX = 0;
-let endX = 0;
-
-container.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
+nextButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        currentPage++;
+        container.style.transform = 
+            `translateX(-${currentPage * 100 / 3}%)`;
+    });
 });
 
-container.addEventListener('touchend', (e) => {
-    endX = e.changedTouches[0].clientX;
-
-    const diff = startX - endX;
-
-    // 왼쪽으로 스와이프
-    if (diff > 50) {
-        if (currentPage < totalPages - 1) {
-            currentPage++;
-            moveSlide();
-        }
-    }
-
-    // 오른쪽으로 스와이프
-    if (diff < -50) {
-        if (currentPage > 0) {
-            currentPage--;
-            moveSlide();
-        }
-    }
-});
+startButton.addEventListener('click', () => {
+    window.location.href = '/login/';
+})
