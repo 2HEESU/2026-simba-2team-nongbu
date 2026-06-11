@@ -25,4 +25,5 @@ urlpatterns = [
     path('space/room/', space_room, name='space_room'),
     path('space/', include('spaces.urls')),
     path('account/', include('accounts.urls')),
+    path('space/upload/', space_upload, name='space_upload'),
 ]
