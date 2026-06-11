@@ -4,6 +4,7 @@ from app.views import (
     onboarding,
     onboarding_start,
     space_room,
+    space_upload,
     memory_main,
     mypage_main,
 )
@@ -21,6 +22,7 @@ urlpatterns = [
     path('onboarding/start/', onboarding_start, name='onboarding_start'),
     path('memory/', memory_main, name='memory_main'),
     path('mypage/', mypage_main, name='mypage_main'),
+    path('space/room/', space_room, name='space_room'),
     path('space/', include('spaces.urls')),
     path('account/', include('accounts.urls')),
 ]
