@@ -14,10 +14,10 @@
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
- <div class="space-main">
+<div class="space-main">
     <div class="elements-1">
         <div class="top-bar">
-            <a href="{% url 'home_create_room2' %}" class="back-button">
+            <a href="{% url 'spaces:home_create_room2' %}" class="back-button">
                 <img src="{% static 'images/chevron-backward.svg' %}">
             </a>
             <p class="top-bar-title">{{ space.name }}</p>
@@ -39,10 +39,10 @@
         </div>
 
         <button class="primary-btn upload-btn">업로드</button>
-        
+
     </div>
- </div>
- 
+</div>
+
 
 {% endblock %}
 
