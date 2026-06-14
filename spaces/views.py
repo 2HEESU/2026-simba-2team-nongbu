@@ -2,6 +2,8 @@ import uuid
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.db.models import Q
+from django.utils import timezone
+from datetime import timedelta
 
 def home_main(request):
     if not request.user.is_authenticated:
@@ -15,8 +17,25 @@ def home_main(request):
         spaces = spaces.filter(
             Q(name__icontains=search) | Q(keyword__icontains=search)
         )
+        
+    active_spaces = []
+    for space in spaces:
+        end_date = space.created_at + timedelta(days=space.duration_days)
+        
+        if timezone.now() < end_date:
+            active_spaces.append(space)
+
+    # 테스트코드 ==============================
+    print("\n" + "="*40)
+    print(f"현재 로그인한 유저: {request.user}")
+    print(f"현재 동작하는 우주 개수: {len(active_spaces)}개")
+    for space in active_spaces:
+        print(f"방 이름: {space.name}")
+    print("="*40 + "\n")
+    # 테스트코드 ==============================
+
     return render(request, 'home/home_main.html', {
-        'spaces': spaces, 
+        'spaces': active_spaces, 
         'search': search
     })
 
@@ -128,7 +147,23 @@ def join_space(request):
 
 def space_main(request):
     my_spaces = Space.objects.filter(members__user=request.user)
-    return render(request, 'space/space_main.html', {'spaces': my_spaces})
+    active_spaces = []
+
+    for space in my_spaces:
+        end_date = space.created_at + timedelta(days=space.duration_days)
+        
+        if timezone.now() < end_date:
+            active_spaces.append(space)
+    # 테스트코드 ==============================
+    print("\n" + "="*40)
+    print(f"현재 로그인한 유저: {request.user}")
+    print(f"현재 동작하는 우주 개수: {len(active_spaces)}개")
+    for space in active_spaces:
+        print(f"방 이름: {space.name}")
+    print("="*40 + "\n")
+    # 테스트코드 ==============================
+
+    return render(request, 'space/space_main.html', {'spaces': active_spaces})
 
 def space_room(request, space_id):
     space = get_object_or_404(Space, pk=space_id)

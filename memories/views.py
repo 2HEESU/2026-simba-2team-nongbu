@@ -7,15 +7,16 @@ def memory_main(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
     
-    spaces = Space.objects.filter(members__user=request.user)
+    my_spaces = Space.objects.filter(members__user=request.user)
     
     memories = []
 
-    for space in spaces:
+    for space in my_spaces:
         end_date = space.created_at + timedelta(days=space.duration_days)
         if timezone.now() >= end_date:
             memories.append(space)
 
+    # 테스트코드 ==============================
     print("\n" + "="*40)
     print(f"현재 로그인한 유저: {request.user}")
     print(f"추억에 담긴 우주 개수: {len(memories)}개")
@@ -23,6 +24,6 @@ def memory_main(request):
     for memory in memories:
         print(f"방 이름: {memory.name}")
     print("="*40 + "\n")
-
+    # 테스트코드 ==============================
 
     return render(request, 'memory/memory_main.html', {'memories': memories})
