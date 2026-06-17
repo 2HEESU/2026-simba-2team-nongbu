@@ -38,6 +38,8 @@
                     {% if error %}
                     <img src="{% static 'images/warning-circle-thin.svg' %}">
                     <p>{{error}}</p>
+                    {% else %}
+                    <div class="spacer"></div>
                     {% endif %}
                 </div>
             </div>

@@ -122,6 +122,10 @@
     line-height: 24px;
 }
 
+.spacer {
+    height: 24px;
+}
+
 .login-btn {
     display: flex;
     width: 344px;
