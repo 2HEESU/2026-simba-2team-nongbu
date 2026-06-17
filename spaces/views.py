@@ -121,8 +121,8 @@ def space_create_step3(request):
 
         new_space.save()
 
-        return redirect('home_main')
-    return redirect('home_create_room1')
+        return redirect('spaces:home_main')
+    return redirect('spaces:home_create_room1')
 
 def join_space(request):
     if request.method == 'POST':
