@@ -10,8 +10,23 @@ def space_main(request):
 def memory_main(request):
     return render(request, 'memory/memory_main.html')
 
+def memory_list(request):
+    return render(request, 'memory/memory_gallery_list.html')
+
 def mypage_main(request):
     return render(request, 'mypage/mypage_main.html')
+
+def mypage_change_password(request):
+    return render(request, 'mypage/mypage_change_password.html')
+
+def mypage_change_nickname(request):
+    return render(request, 'mypage/mypage_change_nickname.html')
+
+def mypage_logout(request):
+    return render(request, 'mypage/mypage_logout.html')
+
+def mypage_delete_account(request):
+    return render(request, 'mypage/mypage_delete_account.html')
 
 def onboarding(request):
     return render(request, 'onboarding/onboarding.html')

@@ -1,24 +1,14 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}
-페이지이름
-{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/mypage/mypage_logout.css' %}">
-<link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
-{% endblock %}
-
-{% block content %}
-
-<!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
-
-
-
-{% include 'components/navbar.html' with active_nav='mypage' %}
-{% endblock %}
-
-{% block extra_js %}
-<script src="{% static 'js/페이지js경로.js' %}"></script>
-{% endblock %}
+<div id="logoutModal" class="logout-modal">
+    <div class="logout-box">
+        <div class="logout-card">
+            <div class="text-card">
+                <p class="logout-title">로그아웃</p>
+                <p class="logout-message">로그아웃 하시겠습니까?</p>
+            </div>
+            <div class="btn-card">
+                <button id="logoutCancel">취소</button>
+                <button id="logoutConfirm">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
