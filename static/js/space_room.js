@@ -40,17 +40,6 @@ menuOverlay.addEventListener('click', () => {
 });
 
 
-
-// ===== 업로드 =====
-
-const upLoadBtn = document.getElementById('upLoadBtn');
-
-upLoadBtn.addEventListener('click', () => {
-
-    window.location.href = "{% url 'space_upload' %}";
-})
-
-
 // ===== 별자리 =====
 
 const spaceRoom = document.querySelector('.space-room');
