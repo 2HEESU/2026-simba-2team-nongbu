@@ -2,11 +2,13 @@
 {% load static %}
 
 {% block title %}
-페이지이름
+마이페이지
 {% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/mypage/mypage_main.css' %}">
+<link rel="stylesheet" href="{% static 'css/mypage/mypage_logout.css' %}">
+<link rel="stylesheet" href="{% static 'css/mypage/mypage_delete_account.css' %}">
 <link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
 {% endblock %}
 
@@ -15,13 +17,33 @@
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
 <div class="mypage-main">
     <div class="elements-1">
-        
+        <p class="large-title">마이페이지</p>
+        <div class="elements-2">
+            <div class="user-info">
+                <p>회원 정보</p>
+                <button>비밀번호 변경</button>
+                <button>닉네임 변경</button>
+            </div>
+            <div class="more-menu">
+                <p>더보기</p>
+                <button>
+                    <span>로그아웃</span>
+                    <img src="{% static 'images/Log-Out-Icon.svg' %}">
+                </button>
+                <button>
+                    <span>회원 탈퇴</span>
+                    <img src="{% static 'images/Delete-Account-Icon.svg' %}">
+                </button>
+            </div>
+        </div>
     </div>
+    {% include 'mypage/mypage_logout.html'%}
+    {% include 'mypage/mypage_delete_account.html'%}
     {% include 'components/navbar.html' with active_nav='mypage' %}
 </div>
 
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/페이지js경로.js' %}"></script>
+<script src="{% static 'js/mypage_main.js' %}"></script>
 {% endblock %}

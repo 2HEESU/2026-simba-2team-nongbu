@@ -2,21 +2,43 @@
 {% load static %}
 
 {% block title %}
-페이지이름
+닉네임 변경
 {% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/mypage/mypage_change_nickname.css' %}">
 <link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/primary_button.css' %}">
+
 {% endblock %}
 
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
+<div class="nickname-main">
+    <form action="{% url 'mypage_main' %}" method="POST" class="form-box">
+        {% csrf_token %}
+        <div class="change-nickname">
+            <p class="Large-title">닉네임 변경</p>
+            <div class="frame-1">
+                <div class="now-nickname">
+                    <p>현재 닉네임</p>
+                    <div class="my-name">이채은</div>
+                </div>
+                <div class="form-group">
+                    <label for="new-nickname">새 닉네임</label>
+                    <input id="new-nickname" type="text" name="new-nickname" placeholder="닉네임을 입력하세요" required>
+                    <p class="info">최대 10자까지 입력 가능합니다</p>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="primary-btn change-btn">
+            변경
+        </button>
+    </form>
+    {% include 'components/navbar.html' with active_nav='mypage' %}
+</div>
 
-
-
-{% include 'components/navbar.html' with active_nav='mypage' %}
 {% endblock %}
 
 {% block extra_js %}
