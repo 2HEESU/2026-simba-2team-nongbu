@@ -134,3 +134,27 @@
 p.member-count {
     color: #F00;
 }
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-top: 10px;
+}
+
+.error-message img {
+    width: 16px;
+    height: 16px;
+}
+
+.error-message span {
+    color:#F00;
+
+    /* 얇은 글씨체용 */
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px; /* 200% */
+}

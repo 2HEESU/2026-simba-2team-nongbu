@@ -51,7 +51,15 @@ home_참여하기
                 </div>
             </div>
 
-            <button class="primary-btn joinin-btn">참여하기</button>
+            <form method="POST">
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="primary-btn joinin-btn">
+                    참여하기
+                </button>
+            </form>
 
         </div>
     </div>
