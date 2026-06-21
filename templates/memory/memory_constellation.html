@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-페이지이름
+추억의 별자리
 {% endblock %}
 
 {% block extra_css %}
@@ -11,15 +11,37 @@
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'memories:memory_gallery_list' space_id=space.space_id %}">
-    테스트 별자리
-</a>
+<div class="space-room space-detail">
 
-{% include 'components/navbar.html' with active_nav='memory' %}
+    <div class="top-bar">
+        <a href="{% url 'spaces:space_main' %}" class="back-button">
+            <img src="{% static 'images/chevron-backward-white.svg' %}">
+        </a>
+        <p class="top-bar-title">{{ space.name }}</p>
+    </div>
+
+    <div id="spaceMap">
+        <div class="constellation-area">
+            <svg id="constellation-svg"></svg>
+        </div>
+
+        {{ render_constellations|json_script:"constellations-data" }}
+    </div>
+
+    <button id="resetViewBtn" class="reset-view-btn">
+        <img src="{% static 'images/akar-icons_arrow-back.svg' %}">
+        다시 가운데로 이동
+    </button>
+
+
+    <button class="share-btn" id="shareBtn">
+        <img src="{% static 'images/share-btn.svg' %}">
+    </button>
+</div>
 
 {% endblock %}
 
 
 {% block extra_js %}
-<script src="{% static 'js/페이지js경로.js' %}"></script>
+<script src="{% static 'js/memory_constellation.js' %}"></script>
 {% endblock %}
