@@ -32,6 +32,12 @@ home_참여하기
                                           <input class="input-field" name="invite_code" placeholder="받은 코드 또는 링크를 입력하세요">
                                     </div>
                                     <p class="input-description">친구한테 코드 또는 링크를 받으세요</p>
+                                    {% if error %}
+                                    <p class="error-message">
+                                          <img src="{% static 'images/ph_warning-circle-thin-red.svg' %}" alt="error">
+                                          {{ error }}
+                                    </p>
+                                    {% endif %}
                               </div>
                               <button type="submit" class="primary-btn next-btn">다음</button>
                         </form>
