@@ -245,17 +245,3 @@ def space_room(request, space_id=None):
             "render_constellations": render_constellations,
         }
     )
-
-def home_room_detail(request, space_id):
-    space = get_object_or_404(Space, pk=space_id)
-
-    current_members = SpaceMember.objects.filter(space=space).count()
-
-    return render(
-        request,
-        'home/home_room_detail.html',
-        {
-            'space': space,
-            'current_members': current_members,
-        }
-    )

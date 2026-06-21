@@ -7,5 +7,6 @@ urlpatterns = [
     path('', memory_main, name='memory_main'), 
     path('calendar/', memory_calendar, name='memory_calendar'),
     path('gallery/', memory_gallery, name='memory_gallery'),
+    path('<int:space_id>/constellation/', memory_constellation, name='memory_constellation'),
 ]
 
