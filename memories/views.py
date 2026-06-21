@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from spaces.models import Space
 from django.utils import timezone
 from datetime import timedelta
@@ -8,7 +8,7 @@ def memory_main(request):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
     
-    my_spaces = Space.objects.filter(members__user=request.user)
+    my_spaces = Space.objects.filter(members__user=request.user).order_by('-created_at')
     
     memories = []
 
@@ -60,3 +60,30 @@ def memory_calendar(request):
 
 def memory_gallery(request):
     return render(request, 'memory/memory_gallery.html')
+
+
+def memory_constellation(request, space_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+
+    space = get_object_or_404(
+        Space.objects.filter(
+            members__user=request.user).distinct(),
+        space_id=space_id
+    )
+
+    end_datetime = space.created_at + timedelta(
+        days=space.duration_days
+    )
+
+    if timezone.now() < end_datetime:
+        return redirect('memories:memory_main')
+
+    stars = space.stars.order_by('created_at')
+
+    return render(request, 'memory/memory_constellation.html', {
+        'space': space,
+        'stars': stars,
+        'start_date': space.created_at.date(),
+        'end_date': end_datetime.date(),
+    })
