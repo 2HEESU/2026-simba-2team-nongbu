@@ -220,23 +220,23 @@ def space_main(request):
 
     return render(request, 'space/space_main.html', {'spaces': active_spaces})
 
-# def space_room(request, space_id):
-#     space = get_object_or_404(Space, pk=space_id)
-#     return render(request, 'space/space_room.html', {'space': space})
 
-def space_room(request, space_id=None):
-
-    total_memory_count = 8  # 테스트
-
+def space_room(request, space_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    
+    space = get_object_or_404(Space, pk=space_id)
+    
+    # DB에 저장된 실제 사진(별)의 총 개수만 카운트합니다!
+    total_memory_count = space.stars.count() 
+    
     remain = total_memory_count
-
     render_constellations = []
 
+    # 이 로직은 JS에게 별 개수 알려주기
     for name in CONSTELLATION_ORDER:
-
         constellation = CONSTELLATIONS[name]
         required = constellation["required"]
-
         current = min(remain, required)
 
         render_constellations.append({
@@ -247,14 +247,13 @@ def space_room(request, space_id=None):
         })
 
         remain -= required
-
         if remain <= 0:
             break
 
-    return render(
-        request,
-        "space/space_room.html",
-        {
-            "render_constellations": render_constellations,
-        }
-    )
+    context = {
+        'space': space,
+        'space_id': space_id,
+        'render_constellations': render_constellations, 
+    }
+
+    return render(request, 'space/space_room.html', context)
