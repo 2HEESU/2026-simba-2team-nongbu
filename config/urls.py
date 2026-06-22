@@ -19,6 +19,8 @@ from django.urls import include
 from spaces.views import home_main
 from accounts.views import mypage_main
 
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
@@ -36,3 +38,8 @@ urlpatterns = [
     path('mypage/password/', mypage_change_password, name='mypage_change_password'),
     path('mypage/nickname/', mypage_change_nickname, name='mypage_change_nickname'),
 ]
+
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)
