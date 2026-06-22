@@ -9,6 +9,7 @@ class Star(models.Model):
     content = models.TextField(null=True)
     image = models.ImageField(null=True, blank=True, upload_to='stars/')
     created_at = models.DateTimeField(auto_now_add=True)
-
+    sequence = models.IntegerField(default=1)      
+    
     def __str__(self):
         return f"{self.user.username}님의 별"
