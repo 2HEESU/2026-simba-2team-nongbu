@@ -29,3 +29,15 @@ imageInput.addEventListener("change", function () {
 
     reader.readAsDataURL(file);
 });
+
+// 하루 1개 제한
+    setTimeout(() => {
+        const errorMsg = document.getElementById('errorMsg');
+        if (errorMsg) {
+            errorMsg.classList.add('hide');
+
+            setTimeout(() => {
+                errorMsg.style.display = 'none';
+            }, 400);
+        }
+    }, 500);

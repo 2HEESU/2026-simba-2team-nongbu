@@ -40,7 +40,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    
+
     color: var(--Foundation-Violet-Normal, #1A1953);
     text-align: center;
     font-family: Inter;
@@ -149,4 +149,32 @@
     align-items: center;
     gap: 28px;
     width: 375px;
+}
+
+.error {
+    padding: 7px 21px;
+    border-radius: 5px;
+    background: var(--Foundation-Violet-Normal, #1A1953);
+    transition: opacity 0.5s ease;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.error p {
+    color: var(--Foundation-Violet-Light, #E8E8EE);
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.error.hide {
+    opacity: 0;
 }
